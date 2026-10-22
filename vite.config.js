@@ -4,5 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/gf-quest-app/', 
+  base: '/', // 確保 Netlify 部署時使用根目錄
 })

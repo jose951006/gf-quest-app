@@ -27,16 +27,16 @@ import { supabase } from "./supabaseClient"; // 🔗 引入 Supabase 連線設�
 // ⚙️ 設定你的電話號碼 (用於一鍵 WhatsApp 領獎，格式：852 + 8位電話號碼)
 const BOYFRIEND_PHONE = "85261681833";
 
-// 🏆 迪士尼風格等級頭銜設定 (根據完成的堂數 0 - 24 堂晉升)
+// 🏆 溫柔風格等級頭銜設定 (根據完成的堂數 0 - 24 堂晉升)
 const getLevelInfo = (completedCount) => {
-  if (completedCount === 0) return { title: "🌱 奇妙畫壇萌新", badge: "Lv.1" };
-  if (completedCount < 4) return { title: "🪄 仙女棒見習生", badge: "Lv.2" };
-  if (completedCount < 8) return { title: "🏰 城堡透視小行家", badge: "Lv.3" };
-  if (completedCount < 12) return { title: "❄️ 冰雪光影練習生", badge: "Lv.4" };
-  if (completedCount < 16) return { title: "🎨 夢幻色彩小達人", badge: "Lv.5" };
-  if (completedCount < 20) return { title: "🧚‍♀️ 奇妙角色魔法師", badge: "Lv.6" };
-  if (completedCount < 24) return { title: "🌟 迪士尼風準畫家", badge: "Lv.7" };
-  return { title: "👑 殿堂級奇妙大師", badge: "MAX" };
+  if (completedCount === 0) return { title: "🌱 溫柔畫壇萌新", badge: "Lv.1" };
+  if (completedCount < 4) return { title: "🪄 柔光筆見習生", badge: "Lv.2" };
+  if (completedCount < 8) return { title: "☁️ 晴空透視小行家", badge: "Lv.3" };
+  if (completedCount < 12) return { title: "💧 輕柔光影練習生", badge: "Lv.4" };
+  if (completedCount < 16) return { title: "🎨 夢幻粉藍小達人", badge: "Lv.5" };
+  if (completedCount < 20) return { title: "🧚‍♀️ 溫柔魔法師", badge: "Lv.6" };
+  if (completedCount < 24) return { title: "🌟 晴空準畫家", badge: "Lv.7" };
+  return { title: "👑 殿堂級溫柔大師", badge: "MAX" };
 };
 
 // 📋 預設 24 堂任務清單
@@ -104,13 +104,13 @@ export default function App() {
       particleCount,
       spread: 90,
       origin: { y: originY },
-      colors: ["#7dd3fc", "#38bdf8", "#fde047", "#e0f2fe", "#818cf8"],
+      colors: ["#bae6fd", "#7dd3fc", "#e0f2fe", "#fef08a", "#c7d2fe"],
     });
   };
 
   useEffect(() => {
     if (!isEntered) {
-      triggerConfetti(150, 0.3);
+      triggerConfetti(120, 0.3);
       const timer = setTimeout(() => setIsEntered(true), 15000);
       return () => clearTimeout(timer);
     }
@@ -272,36 +272,36 @@ export default function App() {
 
   if (!isEntered) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-300 via-cyan-200 to-indigo-300 flex flex-col items-center justify-center font-sans relative overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 animate-bounce text-6xl opacity-40 mix-blend-overlay">🏰</div>
-        <div className="absolute bottom-1/4 right-1/4 animate-pulse text-6xl opacity-40 mix-blend-overlay">❄️</div>
-        <div className="absolute top-2/3 left-1/3 animate-bounce text-5xl opacity-40 mix-blend-overlay" style={{ animationDelay: "1s" }}>✨</div>
+      <div className="min-h-screen bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-100 flex flex-col items-center justify-center font-sans relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 animate-bounce text-6xl opacity-30 mix-blend-overlay">☁️</div>
+        <div className="absolute bottom-1/4 right-1/4 animate-pulse text-6xl opacity-30 mix-blend-overlay">💧</div>
+        <div className="absolute top-2/3 left-1/3 animate-bounce text-5xl opacity-30 mix-blend-overlay" style={{ animationDelay: "1s" }}>✨</div>
 
-        <div className="bg-white/40 p-10 rounded-[3rem] backdrop-blur-md shadow-2xl text-center z-10 animate-in zoom-in duration-1000 border border-white/50 w-[90%] max-w-sm">
-          <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
-            <Wand2 size={40} className="text-blue-500 animate-pulse" />
+        <div className="bg-white/70 p-10 rounded-[3rem] backdrop-blur-md shadow-xl text-center z-10 animate-in zoom-in duration-1000 border border-sky-100 w-[90%] max-w-sm">
+          <div className="bg-sky-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <Wand2 size={40} className="text-sky-500 animate-pulse" />
           </div>
 
-          <h2 className="text-xl font-bold text-gray-700 mb-2">Welcome to Magic Kingdom,</h2>
-          <h1 className="text-4xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 leading-tight">
+          <h2 className="text-xl font-bold text-slate-600 mb-2">Welcome to Cozy Art,</h2>
+          <h1 className="text-4xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600 leading-tight">
             Princess <br /> Michelle 👸🏻
           </h1>
 
-          <p className="text-gray-800 font-medium mb-8 text-sm bg-white/50 py-2 px-4 rounded-xl">
-            準備好開始今日嘅奇妙畫畫之旅未呀？🎨
+          <p className="text-slate-600 font-medium mb-8 text-sm bg-sky-50/80 py-2 px-4 rounded-xl">
+            準備好開始今日嘅溫柔畫畫之旅未呀？🎨
           </p>
 
           {!showPasswordModal ? (
             <button
               onClick={handleEnterClick}
-              className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-sky-400 to-blue-500 text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-md hover:scale-105 hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"
             >
-              <Stars size={22} /> 進入奇妙畫室
+              <Stars size={22} /> 進入溫柔畫室
             </button>
           ) : (
             <form onSubmit={handlePasswordSubmit} className="space-y-4 animate-in fade-in zoom-in-95 duration-200">
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-gray-400">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
                   <KeyRound size={18} />
                 </span>
                 <input
@@ -314,12 +314,12 @@ export default function App() {
                     setPasswordInput(e.target.value);
                     setPasswordError(false);
                   }}
-                  className="w-full pl-10 pr-4 py-3 bg-white/80 border-2 border-blue-200 focus:border-blue-500 rounded-2xl text-center text-lg font-bold tracking-widest text-gray-800 outline-none shadow-inner transition"
+                  className="w-full pl-10 pr-4 py-3 bg-white/90 border-2 border-sky-200 focus:border-sky-400 rounded-2xl text-center text-lg font-bold tracking-widest text-slate-700 outline-none shadow-inner transition"
                 />
               </div>
 
               {passwordError && (
-                <p className="text-xs font-bold text-red-500 animate-bounce">
+                <p className="text-xs font-bold text-rose-400 animate-bounce">
                   ❌ 密碼錯誤，請重新輸入！ (提示: 0314)
                 </p>
               )}
@@ -328,13 +328,13 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => setShowPasswordModal(false)}
-                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-3 rounded-2xl text-sm transition"
+                  className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-3 rounded-2xl text-sm transition"
                 >
                   返回
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-gradient-to-r from-blue-500 to-cyan-400 hover:opacity-95 text-white font-bold py-3 rounded-2xl text-sm shadow-md transition"
+                  className="flex-1 bg-gradient-to-r from-sky-400 to-blue-500 hover:opacity-95 text-white font-bold py-3 rounded-2xl text-sm shadow-sm transition"
                 >
                   解鎖進入 🔓
                 </button>
@@ -343,7 +343,7 @@ export default function App() {
           )}
 
           {!showPasswordModal && (
-            <p className="text-xs text-gray-500 mt-4 animate-pulse">
+            <p className="text-xs text-slate-400 mt-4 animate-pulse">
               ( 15 秒後自動進入... )
             </p>
           )}
@@ -353,11 +353,11 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-sky-50 flex justify-center font-sans">
-      <div className="w-full max-w-md bg-white min-h-screen shadow-2xl flex flex-col justify-between pb-12 relative overflow-hidden animate-in fade-in duration-500">
+    <div className="min-h-screen bg-sky-50/50 flex justify-center font-sans">
+      <div className="w-full max-w-md bg-white min-h-screen shadow-xl flex flex-col justify-between pb-12 relative overflow-hidden animate-in fade-in duration-500">
         
-        {/* 頂部 Header */}
-        <div className="bg-gradient-to-br from-blue-400 via-cyan-400 to-sky-300 text-white p-6 rounded-b-[2.5rem] shadow-lg relative">
+        {/* 頂部 Header - 改為柔和的晴空藍漸層 */}
+        <div className="bg-gradient-to-br from-sky-300 via-sky-400 to-blue-400 text-white p-6 rounded-b-[2.5rem] shadow-md relative">
           <div className="flex items-center justify-between mb-3">
             {(() => {
               const today = new Date().toLocaleDateString("zh-HK");
@@ -367,10 +367,10 @@ export default function App() {
                 <button
                   onClick={addStreak}
                   disabled={hasCheckedInToday}
-                  className={`flex items-center gap-1.5 text-xs font-bold transition px-3 py-1.5 rounded-full backdrop-blur-md shadow-sm ${
+                  className={`flex items-center gap-1.5 text-xs font-bold transition px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-sm ${
                     hasCheckedInToday
-                      ? "bg-white/40 cursor-not-allowed text-white/90"
-                      : "bg-white/25 hover:bg-white/35 active:scale-95"
+                      ? "bg-white/30 cursor-not-allowed text-white/90"
+                      : "bg-white/20 hover:bg-white/30 active:scale-95"
                   }`}
                 >
                   <Flame
@@ -400,7 +400,7 @@ export default function App() {
           <div className="flex items-center justify-between mt-3">
             <div>
               <div className="flex items-center gap-2">
-                <span className="bg-amber-300 text-amber-950 text-xs font-black px-2 py-0.5 rounded-md">
+                <span className="bg-amber-200/90 text-amber-900 text-xs font-black px-2 py-0.5 rounded-md">
                   {levelInfo.badge}
                 </span>
                 <span className="text-sm font-bold text-sky-50">
@@ -408,7 +408,7 @@ export default function App() {
                 </span>
               </div>
               <h1 className="text-2xl font-extrabold flex items-center gap-2 mt-1">
-                <Palette size={26} /> 奇妙小畫家 24 堂
+                <Palette size={26} /> 溫柔小畫家 24 堂
               </h1>
             </div>
           </div>
@@ -419,14 +419,14 @@ export default function App() {
               <span className="text-xs font-bold">
                 已完成課堂 ({completedCount} / {totalTasksCount} 堂)
               </span>
-              <span className="font-black text-lg text-yellow-200">
+              <span className="font-black text-lg text-amber-100">
                 {progress}%
               </span>
             </div>
 
-            <div className="relative w-full bg-black/20 h-3.5 rounded-full overflow-hidden p-0.5">
+            <div className="relative w-full bg-black/15 h-3.5 rounded-full overflow-hidden p-0.5">
               <div
-                className="bg-gradient-to-r from-yellow-200 to-amber-400 h-full rounded-full transition-all duration-700 ease-out"
+                className="bg-gradient-to-r from-amber-200 to-yellow-300 h-full rounded-full transition-all duration-700 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -442,20 +442,20 @@ export default function App() {
         </div>
 
         {isUploading && (
-          <div className="bg-blue-100 text-blue-600 text-xs font-bold text-center py-2 animate-pulse">
-            ☁️ 正在將畫作上傳至魔法雲端，請稍候...
+          <div className="bg-sky-100 text-sky-700 text-xs font-bold text-center py-2 animate-pulse">
+            ☁️ 正在將畫作上傳至溫柔雲端，請稍候...
           </div>
         )}
 
         {/* 三分頁切換器 */}
         <div className="px-5 pt-5">
-          <div className="bg-blue-50/80 p-1.5 rounded-2xl flex gap-1 border border-blue-100">
+          <div className="bg-sky-50 p-1.5 rounded-2xl flex gap-1 border border-sky-100">
             <button
               onClick={() => setActiveTab("quests")}
               className={`flex-1 py-2.5 rounded-xl text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
                 activeTab === "quests"
-                  ? "bg-white text-blue-600 shadow-sm"
-                  : "text-gray-500 hover:text-blue-500"
+                  ? "bg-white text-sky-600 shadow-sm"
+                  : "text-slate-400 hover:text-sky-500"
               }`}
             >
               <ListTodo size={15} />
@@ -466,21 +466,21 @@ export default function App() {
               className={`flex-1 py-2.5 rounded-xl text-xs font-extrabold flex items-center justify-center gap-1 transition-all relative ${
                 activeTab === "rewards"
                   ? "bg-white text-amber-600 shadow-sm"
-                  : "text-gray-500 hover:text-amber-500"
+                  : "text-slate-400 hover:text-amber-500"
               }`}
             >
               <Trophy size={15} />
               獎品 ({unlockedRewardsCount}/6)
               {unlockedRewardsCount > claimedRewards.length && (
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping absolute top-2 right-2" />
+                <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping absolute top-2 right-2" />
               )}
             </button>
             <button
               onClick={() => setActiveTab("gallery")}
               className={`flex-1 py-2.5 rounded-xl text-xs font-extrabold flex items-center justify-center gap-1 transition-all ${
                 activeTab === "gallery"
-                  ? "bg-white text-blue-600 shadow-sm"
-                  : "text-gray-500 hover:text-blue-500"
+                  ? "bg-white text-sky-600 shadow-sm"
+                  : "text-slate-400 hover:text-sky-500"
               }`}
             >
               <LayoutGrid size={15} />
@@ -494,10 +494,10 @@ export default function App() {
           {activeTab === "quests" && (
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-lg font-extrabold text-gray-800 flex items-center gap-2">
-                  <Sparkles className="text-blue-500" size={20} /> 24 堂課堂清單
+                <h2 className="text-lg font-extrabold text-slate-700 flex items-center gap-2">
+                  <Sparkles className="text-sky-400" size={20} /> 24 堂課堂清單
                 </h2>
-                <div className="flex bg-gray-100 p-0.5 rounded-lg text-[11px] font-bold">
+                <div className="flex bg-slate-100 p-0.5 rounded-lg text-[11px] font-bold">
                   {[
                     { key: "all", label: "全部" },
                     { key: "pending", label: "進行中" },
@@ -508,8 +508,8 @@ export default function App() {
                       onClick={() => setTaskFilter(f.key)}
                       className={`px-2.5 py-1 rounded-md transition ${
                         taskFilter === f.key
-                          ? "bg-white text-blue-600 shadow-sm"
-                          : "text-gray-500"
+                          ? "bg-white text-sky-600 shadow-sm"
+                          : "text-slate-400"
                       }`}
                     >
                       {f.label}
@@ -528,7 +528,7 @@ export default function App() {
                   return (
                     <div key={task.id}>
                       <div
-                        className={`p-4 rounded-2xl border transition-all ${task.completed ? "bg-blue-50/50 border-blue-200" : "bg-white border-gray-100 shadow-sm hover:border-blue-200"}`}
+                        className={`p-4 rounded-2xl border transition-all ${task.completed ? "bg-sky-50/40 border-sky-200" : "bg-white border-slate-100 shadow-sm hover:border-sky-200"}`}
                       >
                         <div className="flex items-center gap-3.5">
                           <button
@@ -537,12 +537,12 @@ export default function App() {
                           >
                             {task.completed ? (
                               <CheckCircle2
-                                className="text-blue-500"
+                                className="text-sky-500"
                                 size={26}
                               />
                             ) : (
                               <Circle
-                                className="text-gray-300 hover:text-blue-300"
+                                className="text-slate-200 hover:text-sky-300"
                                 size={26}
                               />
                             )}
@@ -553,7 +553,7 @@ export default function App() {
                             className="flex-1 cursor-pointer select-none"
                           >
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-gray-100 text-gray-500">
+                              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-500">
                                 {task.category}
                               </span>
                               {isMilestoneTask && (
@@ -563,7 +563,7 @@ export default function App() {
                               )}
                             </div>
                             <h3
-                              className={`font-bold mt-1 text-sm ${task.completed ? "line-through text-gray-400" : "text-gray-800"}`}
+                              className={`font-bold mt-1 text-sm ${task.completed ? "line-through text-slate-400" : "text-slate-700"}`}
                             >
                               {task.title}
                             </h3>
@@ -576,7 +576,7 @@ export default function App() {
                                 setSelectedFile(null);
                                 setPreviewUrl(null);
                               }}
-                              className="cursor-pointer text-xs font-extrabold text-white bg-gradient-to-r from-blue-500 to-cyan-400 hover:opacity-90 px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-md active:scale-95 transition"
+                              className="cursor-pointer text-xs font-extrabold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:opacity-90 px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-sm active:scale-95 transition"
                             >
                               <Camera size={15} />
                               <span>{task.photo ? "更換作品" : "打卡作品"}</span>
@@ -585,15 +585,15 @@ export default function App() {
                         </div>
 
                         {task.photo && (
-                          <div className="mt-3 pt-3 border-t border-blue-100 flex items-center justify-between">
-                            <span className="text-xs text-blue-600 font-medium flex items-center gap-1">
+                          <div className="mt-3 pt-3 border-t border-sky-100 flex items-center justify-between">
+                            <span className="text-xs text-sky-600 font-medium flex items-center gap-1">
                               <ImageIcon size={14} /> 已上傳課堂作品！點擊可放大
                             </span>
                             <img
                               src={task.photo}
                               alt="作品縮圖"
                               onClick={() => setPreviewItem(task)}
-                              className="w-12 h-12 object-cover rounded-xl border-2 border-white shadow-md cursor-pointer hover:scale-105 transition"
+                              className="w-12 h-12 object-cover rounded-xl border-2 border-white shadow-sm cursor-pointer hover:scale-105 transition"
                               loading="lazy"
                             />
                           </div>
@@ -605,7 +605,7 @@ export default function App() {
                         taskFilter === "all" && (
                           <div
                             onClick={() => setActiveTab("rewards")}
-                            className={`mt-2 mb-4 px-4 py-2.5 rounded-xl border border-dashed flex items-center justify-between cursor-pointer transition ${completedCount >= milestoneReward.requiredTasks ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-gray-50 border-gray-200 text-gray-500"}`}
+                            className={`mt-2 mb-4 px-4 py-2.5 rounded-xl border border-dashed flex items-center justify-between cursor-pointer transition ${completedCount >= milestoneReward.requiredTasks ? "bg-amber-50/60 border-amber-300 text-amber-800" : "bg-slate-50 border-slate-200 text-slate-400"}`}
                           >
                             <div className="flex items-center gap-2 text-xs font-bold">
                               <Gift
@@ -614,7 +614,7 @@ export default function App() {
                                   completedCount >=
                                   milestoneReward.requiredTasks
                                     ? "text-amber-500"
-                                    : "text-gray-400"
+                                    : "text-slate-300"
                                 }
                               />
                               <span>
@@ -639,7 +639,7 @@ export default function App() {
           {activeTab === "rewards" && (
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-lg font-extrabold text-gray-800 flex items-center gap-2">
+                <h2 className="text-lg font-extrabold text-slate-700 flex items-center gap-2">
                   <Trophy className="text-amber-500" size={20} /> 6 大里程碑獎品
                 </h2>
                 <span className="text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full">
@@ -655,11 +655,11 @@ export default function App() {
                   return (
                     <div
                       key={reward.id}
-                      className={`p-4 rounded-2xl border flex items-center justify-between gap-3 transition-all ${isUnlocked ? "bg-amber-50/60 border-amber-200 shadow-sm" : "bg-gray-50 border-gray-100 opacity-70"}`}
+                      className={`p-4 rounded-2xl border flex items-center justify-between gap-3 transition-all ${isUnlocked ? "bg-amber-50/50 border-amber-200 shadow-sm" : "bg-slate-50 border-slate-100 opacity-70"}`}
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className={`p-2.5 rounded-xl shrink-0 ${isUnlocked ? "bg-amber-100 text-amber-600" : "bg-gray-200 text-gray-400"}`}
+                          className={`p-2.5 rounded-xl shrink-0 ${isUnlocked ? "bg-amber-100 text-amber-600" : "bg-slate-200 text-slate-400"}`}
                         >
                           <Gift size={22} />
                         </div>
@@ -673,10 +673,10 @@ export default function App() {
                               {reward.requiredTasks})
                             </span>
                           </div>
-                          <div className="font-bold text-gray-800 text-sm mt-1">
+                          <div className="font-bold text-slate-700 text-sm mt-1">
                             {reward.title}
                           </div>
-                          <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">
+                          <p className="text-xs text-slate-400 mt-0.5 line-clamp-2">
                             {reward.desc}
                           </p>
                         </div>
@@ -685,7 +685,7 @@ export default function App() {
                       <button
                         disabled={!isUnlocked}
                         onClick={() => handleClaimReward(reward)}
-                        className={`px-3.5 py-2 rounded-xl text-xs font-bold shrink-0 transition-all ${isClaimed ? "bg-amber-100 text-amber-700 hover:bg-amber-200" : isUnlocked ? "bg-gradient-to-r from-amber-500 to-orange-400 text-white shadow-md hover:opacity-95 active:scale-95 animate-pulse" : "bg-gray-200 text-gray-400 cursor-not-allowed"}`}
+                        className={`px-3.5 py-2 rounded-xl text-xs font-bold shrink-0 transition-all ${isClaimed ? "bg-amber-100 text-amber-700 hover:bg-amber-200" : isUnlocked ? "bg-gradient-to-r from-amber-400 to-orange-400 text-white shadow-sm hover:opacity-95 active:scale-95 animate-pulse" : "bg-slate-200 text-slate-400 cursor-not-allowed"}`}
                       >
                         {isClaimed
                           ? "查看兌換券"
@@ -703,29 +703,29 @@ export default function App() {
           {activeTab === "gallery" && (
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-extrabold text-gray-800 flex items-center gap-2">
-                  <Palette className="text-blue-500" size={20} /> 個人作品展覽館
+                <h2 className="text-lg font-extrabold text-slate-700 flex items-center gap-2">
+                  <Palette className="text-sky-400" size={20} /> 個人作品展覽館
                 </h2>
-                <span className="text-xs font-bold text-blue-500 bg-blue-50 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold text-sky-600 bg-sky-50 px-3 py-1 rounded-full">
                   共 {uploadedArtworks.length} / 24 幅作品
                 </span>
               </div>
 
               {uploadedArtworks.length === 0 ? (
-                <div className="bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl p-8 text-center my-4">
-                  <div className="bg-blue-100 text-blue-500 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-3xl p-8 text-center my-4">
+                  <div className="bg-sky-100 text-sky-500 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3">
                     <ImageIcon size={28} />
                   </div>
-                  <h3 className="font-bold text-gray-700 text-base">
-                    奇妙畫廊仲未有作品呀 🎨
+                  <h3 className="font-bold text-slate-600 text-base">
+                    溫柔畫廊仲未有作品呀 🎨
                   </h3>
-                  <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
                     完成課堂之後，撳任務隔離嘅「打卡作品」上傳畫作，呢度就會自動變成你嘅
                     24 堂專屬展覽館㗎啦！
                   </p>
                   <button
                     onClick={() => setActiveTab("quests")}
-                    className="mt-4 bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition"
+                    className="mt-4 bg-sky-400 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition"
                   >
                     去課堂任務打卡 👉
                   </button>
@@ -736,31 +736,31 @@ export default function App() {
                     <div
                       key={art.id}
                       onClick={() => setPreviewItem(art)}
-                      className="bg-white border border-gray-100 rounded-2xl p-2.5 shadow-sm hover:shadow-md hover:border-blue-200 transition cursor-pointer group flex flex-col justify-between"
+                      className="bg-white border border-slate-100 rounded-2xl p-2.5 shadow-sm hover:shadow-md hover:border-sky-200 transition cursor-pointer group flex flex-col justify-between"
                     >
                       <div>
-                        <div className="aspect-square rounded-xl overflow-hidden bg-gray-100 mb-2.5 relative">
+                        <div className="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2.5 relative">
                           <img
                             src={art.photo}
                             alt={art.title}
                             loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                           />
-                          <span className="absolute top-2 left-2 bg-black/50 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-md">
+                          <span className="absolute top-2 left-2 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-md">
                             第 {art.id} 堂
                           </span>
                         </div>
-                        <h3 className="font-bold text-gray-800 text-xs line-clamp-2 leading-snug px-1">
+                        <h3 className="font-bold text-slate-700 text-xs line-clamp-2 leading-snug px-1">
                           {art.title}
                         </h3>
                       </div>
-                      <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-50 px-1">
-                        <span className="text-[10px] text-gray-400">
+                      <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-50 px-1">
+                        <span className="text-[10px] text-slate-400">
                           {art.uploadDate ? `${art.uploadDate} 作品` : "已收藏"}
                         </span>
                         <Heart
                           size={13}
-                          className="text-blue-400 fill-blue-400"
+                          className="text-sky-400 fill-sky-400"
                         />
                       </div>
                     </div>
@@ -771,9 +771,9 @@ export default function App() {
           )}
         </div>
 
-        {/* 📸 全新明顯的「上傳打卡作品」Popup 視窗 */}
+        {/* 📸 溫柔風格的「上傳打卡作品」Popup 視窗 */}
         {uploadTaskTarget && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-5 z-50 animate-in fade-in duration-200">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-5 z-50 animate-in fade-in duration-200">
             <div className="bg-white w-full max-w-sm rounded-[2rem] overflow-hidden shadow-2xl p-6 text-center space-y-4 relative animate-in zoom-in-95 duration-200">
               <button
                 onClick={() => {
@@ -781,36 +781,36 @@ export default function App() {
                   setSelectedFile(null);
                   setPreviewUrl(null);
                 }}
-                className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-500 p-2 rounded-full transition"
+                className="absolute top-4 right-4 bg-slate-100 hover:bg-slate-200 text-slate-400 p-2 rounded-full transition"
               >
                 <X size={18} />
               </button>
 
-              <div className="bg-blue-50 text-blue-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto shadow-inner">
+              <div className="bg-sky-50 text-sky-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto shadow-inner">
                 <Camera size={32} />
               </div>
 
               <div>
-                <span className="text-[11px] font-bold text-blue-500 bg-blue-50 px-2.5 py-0.5 rounded-md">
+                <span className="text-[11px] font-bold text-sky-500 bg-sky-50 px-2.5 py-0.5 rounded-md">
                   {uploadTaskTarget.category}
                 </span>
-                <h3 className="text-xl font-black text-gray-800 mt-1">
+                <h3 className="text-xl font-black text-slate-700 mt-1">
                   打卡上傳：{uploadTaskTarget.title}
                 </h3>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   請選擇或拍攝你嘅今日畫作相片 📸✨
                 </p>
               </div>
 
               {/* 預覽區域 */}
               {previewUrl ? (
-                <div className="relative aspect-square w-full rounded-2xl overflow-hidden border-2 border-blue-200 shadow-md">
+                <div className="relative aspect-square w-full rounded-2xl overflow-hidden border-2 border-sky-100 shadow-sm">
                   <img src={previewUrl} alt="預覽圖片" className="w-full h-full object-cover" />
                 </div>
               ) : (
-                <label className="border-2 border-dashed border-blue-300 hover:border-blue-500 bg-blue-50/50 hover:bg-blue-50 aspect-video w-full rounded-2xl flex flex-col items-center justify-center cursor-pointer transition gap-2">
-                  <UploadCloud size={32} className="text-blue-400" />
-                  <span className="text-xs font-bold text-blue-600">點擊此處選擇相片檔案</span>
+                <label className="border-2 border-dashed border-sky-200 hover:border-sky-400 bg-sky-50/30 hover:bg-sky-50/60 aspect-video w-full rounded-2xl flex flex-col items-center justify-center cursor-pointer transition gap-2">
+                  <UploadCloud size={32} className="text-sky-400" />
+                  <span className="text-xs font-bold text-sky-600">點擊此處選擇相片檔案</span>
                   <input
                     type="file"
                     accept="image/*"
@@ -823,7 +823,7 @@ export default function App() {
               {/* 按鈕操作區 */}
               <div className="space-y-2 pt-2">
                 {previewUrl && (
-                  <label className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold py-2.5 rounded-xl cursor-pointer flex items-center justify-center gap-1 transition">
+                  <label className="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold py-2.5 rounded-xl cursor-pointer flex items-center justify-center gap-1 transition">
                     重新選擇相片
                     <input
                       type="file"
@@ -837,10 +837,10 @@ export default function App() {
                 <button
                   disabled={!selectedFile || isUploading}
                   onClick={confirmUpload}
-                  className={`w-full py-3.5 rounded-2xl text-sm font-extrabold shadow-lg transition flex items-center justify-center gap-2 ${
+                  className={`w-full py-3.5 rounded-2xl text-sm font-extrabold shadow-md transition flex items-center justify-center gap-2 ${
                     !selectedFile || isUploading
-                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                      : "bg-gradient-to-r from-blue-500 to-cyan-400 text-white hover:opacity-95 active:scale-95 animate-pulse"
+                      ? "bg-slate-100 text-slate-300 cursor-not-allowed"
+                      : "bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:opacity-95 active:scale-95 animate-pulse"
                   }`}
                 >
                   {isUploading ? "正在上傳至雲端..." : "確認上傳打卡 🚀"}
@@ -852,19 +852,19 @@ export default function App() {
 
         {/* 兌換券 Modal */}
         {activeCoupon && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-5 z-50">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-5 z-50">
             <div className="bg-white w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200">
-              <div className="bg-gradient-to-r from-amber-400 to-yellow-500 p-6 text-white text-center relative">
+              <div className="bg-gradient-to-r from-amber-300 to-yellow-400 p-6 text-amber-950 text-center relative">
                 <button
                   onClick={() => setActiveCoupon(null)}
-                  className="absolute top-4 right-4 text-white/80 hover:text-white"
+                  className="absolute top-4 right-4 text-amber-900/60 hover:text-amber-950"
                 >
                   <X size={20} />
                 </button>
-                <div className="bg-white/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-3 backdrop-blur-md">
-                  <Gift size={36} className="text-white" />
+                <div className="bg-white/30 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-3 backdrop-blur-md">
+                  <Gift size={36} className="text-amber-800" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-wider bg-black/15 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold uppercase tracking-wider bg-black/10 px-3 py-1 rounded-full">
                   VIP 專屬獎勵兌換券 #{activeCoupon.id}
                 </span>
                 <h3 className="text-xl font-black mt-3">
@@ -872,12 +872,12 @@ export default function App() {
                 </h3>
               </div>
               <div className="p-6 text-center space-y-5">
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {activeCoupon.desc}
                 </p>
-                <div className="border-2 border-dashed border-gray-200 rounded-2xl p-3 bg-gray-50">
-                  <div className="text-[11px] text-gray-400">兌換狀態</div>
-                  <div className="text-sm font-bold text-blue-600 mt-0.5">
+                <div className="border-2 border-dashed border-slate-200 rounded-2xl p-3 bg-slate-50">
+                  <div className="text-[11px] text-slate-400">兌換狀態</div>
+                  <div className="text-sm font-bold text-sky-600 mt-0.5">
                     ✅ 已達成「{activeCoupon.milestone}」目標解鎖
                   </div>
                 </div>
@@ -886,14 +886,14 @@ export default function App() {
                     href={`https://wa.me/${BOYFRIEND_PHONE}?text=${encodeURIComponent(`親愛嘅！我已經完成咗 ${activeCoupon.requiredTasks} 堂畫畫任務，成功解鎖第 ${activeCoupon.id} 個大獎【${activeCoupon.title}】啦！快啲同我兌換啦 🎉❤️`)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-md transition"
+                    className="w-full bg-sky-400 hover:bg-sky-500 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-sm transition"
                   >
                     <Send size={16} />
-                    一鍵 WhatsApp 男朋友兌換
+                    兌換方法
                   </a>
                   <button
                     onClick={() => setActiveCoupon(null)}
-                    className="w-full py-2.5 text-xs font-semibold text-gray-400 hover:text-gray-600"
+                    className="w-full py-2.5 text-xs font-semibold text-slate-400 hover:text-slate-600"
                   >
                     稍後再兌換
                   </button>
@@ -907,7 +907,7 @@ export default function App() {
         {previewItem && (
           <div
             onClick={() => setPreviewItem(null)}
-            className="fixed inset-0 bg-black/85 backdrop-blur-sm flex flex-col items-center justify-center p-5 z-50"
+            className="fixed inset-0 bg-black/75 backdrop-blur-sm flex flex-col items-center justify-center p-5 z-50"
           >
             <div
               className="max-w-sm w-full bg-white p-3 rounded-3xl shadow-2xl"
@@ -917,7 +917,7 @@ export default function App() {
                 <img
                   src={previewItem.photo}
                   alt={previewItem.title}
-                  className="w-full max-h-[65vh] object-contain rounded-2xl bg-gray-50"
+                  className="w-full max-h-[65vh] object-contain rounded-2xl bg-slate-50"
                 />
                 <button
                   onClick={() => setPreviewItem(null)}
@@ -927,15 +927,15 @@ export default function App() {
                 </button>
               </div>
               <div className="p-3 text-center">
-                <span className="text-[11px] font-bold text-blue-500 bg-blue-50 px-2.5 py-0.5 rounded-md">
+                <span className="text-[11px] font-bold text-sky-500 bg-sky-50 px-2.5 py-0.5 rounded-md">
                   {previewItem.category}
                 </span>
-                <h3 className="font-extrabold text-gray-800 text-base mt-1.5">
+                <h3 className="font-extrabold text-slate-700 text-base mt-1.5">
                   {previewItem.title}
                 </h3>
-                <p className="text-xs text-gray-400 mt-1 flex items-center justify-center gap-1">
-                  <Heart size={13} className="text-blue-400 fill-blue-400" />{" "}
-                  奇妙畫廊珍藏作品
+                <p className="text-xs text-slate-400 mt-1 flex items-center justify-center gap-1">
+                  <Heart size={13} className="text-sky-400 fill-sky-400" />{" "}
+                  溫柔畫廊珍藏作品
                 </p>
               </div>
             </div>

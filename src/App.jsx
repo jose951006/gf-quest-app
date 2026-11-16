@@ -108,14 +108,6 @@ export default function App() {
     });
   };
 
-  useEffect(() => {
-    if (!isEntered) {
-      triggerConfetti(120, 0.3);
-      const timer = setTimeout(() => setIsEntered(true), 15000);
-      return () => clearTimeout(timer);
-    }
-  }, [isEntered]);
-
   const handleEnterClick = () => {
     setShowPasswordModal(true);
   };
@@ -340,12 +332,6 @@ export default function App() {
                 </button>
               </div>
             </form>
-          )}
-
-          {!showPasswordModal && (
-            <p className="text-xs text-slate-400 mt-4 animate-pulse">
-              ( 15 秒後自動進入... )
-            </p>
           )}
         </div>
       </div>
